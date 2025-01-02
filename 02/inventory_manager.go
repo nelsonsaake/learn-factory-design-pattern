@@ -2,21 +2,22 @@ package main
 
 import (
 	"github.com/nelsonsaake/learn-factory-design-pattern/02/tickets"
+	"github.com/nelsonsaake/learn-factory-design-pattern/02/tks"
 )
 
-type NewInventoryRequestItem struct {
-	productType tickets.Type
+type InventoryItem struct {
+	productType tks.TicketType
 	quantity    int
 }
 
 var (
-	inventoryList = []NewInventoryRequestItem{
+	inventory = []InventoryItem{
 		{
-			productType: tickets.Event,
+			productType: tks.EventTicket,
 			quantity:    21,
 		},
 		{
-			productType: tickets.Trip,
+			productType: tks.TripTicket,
 			quantity:    53,
 		},
 	}
@@ -28,7 +29,7 @@ func InventoryManager() {
 
 	cout("===")
 
-	for _, v := range inventoryList {
+	for _, v := range inventory {
 
 		cout("product:", v.productType)
 

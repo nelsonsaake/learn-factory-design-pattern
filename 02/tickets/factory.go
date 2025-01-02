@@ -1,19 +1,18 @@
 package tickets
 
 import (
-	"errors"
-
 	"github.com/nelsonsaake/learn-factory-design-pattern/02/tickets/events"
 	"github.com/nelsonsaake/learn-factory-design-pattern/02/tickets/trips"
+	"github.com/nelsonsaake/learn-factory-design-pattern/02/tks"
 )
 
-func New(t Type) (Ticket, error) {
+func New(t tks.TicketType) (Ticket, error) {
 	switch t {
-	case Event:
+	case tks.EventTicket:
 		return events.New(), nil
-	case Trip:
+	case tks.TripTicket:
 		return trips.New(), nil
 	default:
-		return nil, errors.New("unsupport product type provided")
+		return nil, tks.UnsupportedType
 	}
 }
